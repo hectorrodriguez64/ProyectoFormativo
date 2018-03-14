@@ -1,0 +1,56 @@
+.body
+
+  font-family sans-serif
+  background #3495be
+  padding 10em 0
+
+
+h1
+  text-align center
+  color #ffff
+
+
+.Form-register
+  width 95%
+  max-width 500px
+  margin auto
+  background #ffff
+  border-radius 7px
+
+
+.title
+  background deepskyblue
+  border-bottom 5px solid #050605
+  border-top-left-radius 7px /* dar border a una esquina*/
+  border-top-right-radius 7px
+  color #050605
+  padding 20px
+  text-align center
+
+
+.Contenedor-imputs
+  padding 10px 30px
+
+
+input
+  border-radius 3px
+  padding 15px
+  margin-bottom 15px
+  border 1px solid #1d2222
+
+.Input-48
+  width 48%
+
+.Input-100
+  width 100%
+
+
+.btn-log
+  background #bf5f07
+  padding 10px 40px
+
+.Form-link
+  width 100%
+  margin 7px
+  font-size 12px
+  text-align center

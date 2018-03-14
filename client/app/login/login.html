@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+    <div class="login">
+      <div class="Login-header">
+        Welcome To Login</div>
+      <div class="account-wall">
+        <img class="profile-img img-responsive img-thumbnail" src="assets/images/imagen-login/user.png" alt="">
+      </div>
+      <form class="LoginForm Login" name="clientLogin" ng-submit="loginForm.$valid">
+        <i ripple class="Login-help">
+<svg xmlns="" viewBox="0 0 24 24">
+<path fill="#C7C7C7" d="m12,2c-5.52,0-10,4.48-10,10s4.48,10,10,10,10-4.48,10-10-4.48-10-10-10zm1,17h-2v-2h2zm2.07-7.75-0.9,0.92c-0.411277,0.329613-0.918558,0.542566-1.20218,1.03749-0.08045,0.14038-0.189078,0.293598-0.187645,0.470854,0.02236,2.76567,0.03004-0.166108,0.07573,1.85002l-1.80787,0.04803-0.04803-1.0764c-0.02822-0.632307-0.377947-1.42259,1.17-2.83l1.24-1.26c0.37-0.36,0.59-0.86,0.59-1.41,0-1.1-0.9-2-2-2s-2,0.9-2,2h-2c0-2.21,1.79-4,4-4s4,1.79,4,4c0,0.88-0.36,1.68-0.930005,2.25z"/>
+</svg>
+</i>
+        <md-input-container>
+          <md-icon md-svg-src="" class="name"></md-icon>
+          <input ng-model="vm.user.email" class="text-center" name="userName" type="email" placeholder="email" ng-required="true">
+          <div ng-messages="clientLogin.userName.$error">
+            <div ng-message="required">Your full email is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container md-no-float>
+          <!-- Use floating placeholder instead of label -->
+          <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+          <input class="text-center" ng-model="vm.user.password" type="password" placeholder="Password" ng-required="true" name="userPassword" id="password1">
+          <div ng-messages="clientLogin.userPassword.$error">
+            <div ng-message="required">Your password is required.</div>
+          </div>
+        </md-input-container>
+        <div class="form-group CheckBox" layout="row" layout-align="start center">
+          <input type="checkbox" class="checkbox" onchange="document.getElementById('password1').type = this.checked ? 'text': 'password'">
+          <span class="Check">Ver contraseña</span>
+          <!--input class="Login-check" type="checkbox" id="rem">
+          <label for="rem">Stay Signed in</label-->
+        </div>
+        <md-button class="md-raised md-primary" ng-click="vm.login()">Login</md-button>
+        <div class="Footer-login"><a class="Text-decorecion" ui-sref="usuarios-create">Create an account</a></div>
+
+        <div class="Footer-login"><a  data-target="#pwdModal" data-toggle="modal" class="Text-decorecion">Forgot my password</a></div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--modal-->
+<div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center">What's My Password?</h1>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="text-center">
+
+                          <p>If you have forgotten your password you can reset it here.</p>
+                            <div class="panel-body">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control input-lg" placeholder="E-mail Address" name="email" type="email" ng-model="vm.emailSendPass">
+
+                                    <p ng-if ="vm.finalMessage">
+                                      {{vm.finalMessage}}
+                                    </p>
+                                    </div>
+
+                                    <input class="btn btn-lg btn-primary btn-block" ng-click="vm.recuperarContrasena()"  value="Send My Password" type="submit"> 
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+      </div>
+  </div>
+  </div>
+</div>

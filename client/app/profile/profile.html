@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center ImgP">My Profile</h3>
+        </div>
+        <div class="panel-body ">
+          <div class="row">
+
+            <div class="formulario-client">
+              <h4 class="register-formTitle"></h4>
+              <div class="panel-body2 ">
+                <div layout="column" ng-cloak class="md-inline-form">
+                  <md-content layout-padding class="ImagePerfil">
+                    <form name="form" ng-submit="vm.create(form)" class="text-center">
+                      <img class="ImageItem text center" ng-src="../../assets/fotos-usuarios/{{vm.getPicSrc()}}" alt="esta es mi foto de perfil" / width="130px" height="130px">
+                      <md-dialog-content>
+                        <input type="file" name="file" id="file-1" class="inputfile inputfile-1 hidden" ngf-select name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ng-model="vm.file"/>
+                        <label for="file-1" class="Select">
+                          <!--svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
+                            <path
+                              d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path>
+                          </svg-->
+                          <span class="iborrainputfile"><i class="fa fa-picture-o Picture" aria-hidden="true"></i>Seleccionar imagen</span>
+                        </label>
+                        <button type="submit" class="btn btn-primary SubirImagen">Subir Imágen</button>
+                      </md-dialog-content>
+                      <!--section>
+                        <button type="submit" class="btn btn-primary">Subir Imágen</button>
+                      </section-->
+                    </form>
+                  </md-content>
+                </div>
+              </div>
+            </div>
+
+            <!--div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="assets/fotos-usuarios/avatar-user.png" ng-src="../../assets/fotos-usuarios/{{vm.getPicSrc()}}" class="img-circle img-responsive"> </div-->
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody >
+                  <tr>
+                    <td>First Name:</td>
+                    <td>{{vm.usuario.name}}</td>
+                  </tr>
+                  <tr>
+                    <td>last Name:</td>
+                    <td>{{vm.usuario.lastName}}</td>
+                  </tr>
+                  <tr>
+                    <td>Ciudad</td>
+                    <td>{{vm.usuario.idCities.description}}</td>
+                  </tr>
+                  <tr>
+                    <td>Tipo Documento</td>
+                    <td>{{vm.usuario.idDocumentsType.description}}</td>
+                  </tr>
+                  <tr>
+                    <td>NumeroDocmento</td>
+                    <td>{{vm.usuario.numDocument}}</td>
+                  </tr>
+                  <tr>
+                    <td>Genero</td>
+                    <td>{{vm.usuario.sex}}</td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td>{{vm.usuario.email}}</td>
+                  </tr>
+                  <td>Phone Number</td>
+                  <td>{{vm.usuario.telephone}}
+                  </td>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <span class="pull-right">
+            <a ui-sref="profile-update" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-info">
+              <i class="glyphicon glyphicon-edit"></i>
+              Edit Profile</a>
+            <!--a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a-->
+          </span>
+          <a ui-sref="change-password" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
+            <i class="glyphicon glyphicon-lock"></i>
+            Change Password</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

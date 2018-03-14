@@ -1,0 +1,157 @@
+<div layout="column" ng-cloak class="container text-center Layout-form  Create-layout">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="text-center Create-formTitle "><i class="fa fa-user"></i> Actualiza Tu Cuenta</h3>
+    </div>
+    <div class="panel-body">
+      <md-content layout-padding class="Create-form">
+        <form name="userForm" class="centered-form form-group" novalidate="">
+          <!-- NAME //-->
+          <div layout-gt-sm="row">
+            <div class="Create-formInpu">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Name</label>
+                <input type="text" class="Text-capitalize" md-maxlength="30" maxlength="30" required name="name" ng-pattern="/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/" ng-model="vm.user.name" />
+                <div ng-messages="userForm.name.$error">
+                  <div ng-message="required">Name is required.</div>
+                  <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+                  <div ng-message="pattern">Only letters.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+            <!-- lAST NAME //-->
+            <div class="Create-formInpu">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Last name</label>
+                <input md-maxlength="30" required name="LastName" ng-pattern="/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/" ng-model="vm.user.lastName" />
+                <div ng-messages="userForm.LastName.$error">
+                  <div ng-message="required">Last Name is required.</div>
+                  <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+                  <div ng-message="pattern">Only letters.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+            <!-- SEX //-->
+            <div class="Create-formSelect">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Sexo</label>
+                <md-select ng-required="true" name="sexo" ng-model="vm.user.sex">
+                  <md-option value="M">M</md-option>
+                  <md-option value="F">F</md-option>
+                </md-select>
+                <div ng-messages="dataForm.sexo.$error">
+                  <div ng-message="required">Este campo es requerido.</div>
+                  <!-- <div ng-message="md-maxlength"> no puede superar x caracteres.</div> -->
+                </div>
+              </md-input-container>
+            </div>
+            <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+            <!-- TYPE DOCUMENT//-->
+            <div class="Create-formLefts">
+              <md-input-container class="md-block Create-formLeft " flex-gt-sm>
+                <label>Tipo Documento</label>
+                <md-select name="tipoDocumento" ng-model="vm.user.documentsType.id">
+                  <md-option ng-value="item.id" ng-repeat="item in vm.tipoDocumento">
+                    {{item.description}}
+                  </md-option>
+                </md-select>
+                <div ng-messages="dataForm.tipoDocumento.$error">
+                  <div ng-message="required">Este campo es requerido.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+            <!-- DOCUMENT NUMBER //-->
+            <div class="Create-formSelect">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Document number</label>
+                <input name="social" ng-model="vm.user.numDocument" ng-pattern="/^[0-9]{1,20}$/" />
+                <div ng-messages="userForm.social.$error">
+                  <div ng-message="pattern">###-##-#### - Please enter a valid Document number.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+            <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+            <!-- EMAIL //-->
+          </div>
+          <div layout-gt-sm="row">
+
+             <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+            <!--Ciudades-->
+            <div class="Create-formInpu">
+             <md-autocomplete flex required md-selected-item-change="vm.selectedItemChange(vm.selectedItem)" md-selected-item="vm.selectedItem" md-input-name="autocompleteField" md-search-text="vm.searchText" md-items="item in vm.querySearch(vm.searchText)" md-item-text="item.description" md-require-match md-floating-label="Citys">
+               <md-item-template>
+                 <span class="item-title">
+                      <span> <strong>{{item.description}} </span>
+                 </span>
+                 <span class="item-metadata">
+                      <span>
+                        {{item.idDepartaments.description}}</strong>
+                      </span>
+                 </span>
+               </md-item-template>
+               <div ng-messages="userForm.autocompleteField.$error" ng-if="userForm.autocompleteField.$touched">
+                 <div ng-message="required">You <b>must</b> have a favorite state.</div>
+                 <div ng-message="md-require-match">Please select an existing state.</div>
+                 <div ng-message="minlength">Your entry is not long enough.</div>
+                 <div ng-message="maxlength">Your entry is too long.</div>
+               </div>
+             </md-autocomplete>
+           </div>
+           <!--Email-->
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Email</label>
+              <input name="email" ng-model="vm.user.email" required minlength="10" maxlength="100" ng-pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/" />
+              <div ng-messages="userForm.email.$error">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                  Your email must be between 10 and 100 characters long and look like an e-mail address.
+                </div>
+              </div>
+            </md-input-container>
+            <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+            <!--Contraseña-->
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Password</label>
+              <input name="social" type="password" ng-model="vm.user.password" />
+            </md-input-container>
+            <!-- PHONE NUMBER //-->
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Phone Number</label>
+              <input name="phone" ng-model="vm.user.telephone" ng-pattern="/^[0-9]{1,20}$/" />
+              <div ng-messages="userForm.phone.$error">
+                <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout="row" layout-sm="column" layout-align="center center">
+            <!--md-button ng-click="vm.createUser()" type="submit" class="Btn-save" title="Crear Usuarios" aria-label="Crear Usuarios">
+              <md-icon md-font-icon="fa-floppy-o" class="fa md-primary md-hue-2">
+                Guardar
+              </md-icon>
+            </md-button-->
+             <button class="Create-formButton"  ng-click="vm.updateUser()" type="submit">Update Account</button>
+          </div>
+        </form>
+      </md-content>
+    </div>
+  </div>
+</div>

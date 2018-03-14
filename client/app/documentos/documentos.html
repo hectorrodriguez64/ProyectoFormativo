@@ -1,0 +1,157 @@
+<div class="container" style="padding-top: 115px; margin-left 20px">
+  <div class="row">
+    <div class="col-lg-12 Botons">
+      <!-- Barra para crear documentos o carpetas, siempre que ya exista alguno -->
+      <div class="Botons" ng-if="vm.myDocuments.length > 0 || vm.mySharedDocuments.length > 0 || vm.myFolders.length > 0 || vm.mySharedFolders.length > 0" style="margin-top: 10px">
+        <button class="col-lg-3 btn btn-primary" style="margin-right: 10px " data-toggle="modal" data-target="#createFolderModal">CREAR CARPETA</button>
+        <button class="col-lg-3  btn btn-primary" data-toggle="modal" data-target="#uploadFileModal">SUBIR DOCUMENTO</button>
+      </div>
+      <!-- Si hay documentos propios, compartidos o carpetas-->
+      <div class="col-lg-12 text-center" ng-if="vm.myDocuments.length > 0 || vm.mySharedDocuments.length > 0 || vm.myFolders.length > 0 || vm.mySharedFolders.length > 0">
+        <div ng-if="vm.myDocuments.length > 0" class="col-lg-12 Doc">
+          <h2>MIS DOCUMENTOS</h1>
+          <div class="col-lg-3 " ng-repeat="document in vm.myDocuments">
+            <div class="list-group" ng-dblclick="vm.openDocument(document.id)">
+              <a href="#" class="list-group-item {{document.format}}">
+                <i class="fa fa-file-word-o" style="font-size: 45px" ng-if="document.format == 'doc' || document.format == 'docx' "></i>
+                <i class="fa fa-file-pdf-o" style="font-size: 45px" ng-if="document.format == 'pdf' "></i>
+                <p class="list-group-item-text text-center" style="font-size: 12px; font-weight: bold;">{{document.name}}</p>
+
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="vm.myFolders.length > 0" class="col-lg-12 Doc" id="carpeta">
+          <h2>MIS CARPETAS</h2>
+          <div class="col-lg-3" ng-repeat="folder in vm.myFolders">
+            <div class="list-group" ng-dblclick="vm.openFolder(folder.id)">
+              <a href="#" class="list-group-item folder">
+                <i class="fa fa-folder-open" style="font-size: 45px"></i>
+                <p class="list-group-item-text" style="font-size: 12px; font-weight: bold;">{{folder.name}}</p>
+
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="vm.mySharedDocuments.length > 0" id="compartidos">
+          <h2>DOCUMENTOS COMPARTIDOS CONMIGO</h2>
+          <div class="col-lg-3" ng-repeat="document in vm.mySharedDocuments">
+            <div class="list-group" ng-dblclick="vm.openDocument(document.id)">
+              <a href="#" class="list-group-item {{document.format}}">
+                <i class="fa fa-file-word-o" style="font-size: 45px" ng-if="document.format == 'doc' || document.format == 'docx' "></i>
+                <i class="fa fa-file-pdf-o" style="font-size: 45px" ng-if="document.format == 'pdf' "></i>
+                <p class="list-group-item-text text-center" style="font-size: 12px; font-weight: bold;">{{document.name}}</p>
+
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="vm.mySharedFolders.length > 0" class="col-lg-12">
+          <h2>CARPETAS COMPARTIDAS CONMIGO</h2>
+          <div class="col-lg-3" ng-repeat="folder in vm.mySharedFolders">
+            <div class="list-group" ng-dblclick="vm.openFolder(folder.id)">
+              <a href="#" class="list-group-item folder">
+                <i class="fa fa-folder-open" style="font-size: 45px"></i>
+                <p class="list-group-item-text" style="font-size: 12px; font-weight: bold;">{{folder.name}}</p>
+
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- De lo contrario -->
+      <div class="col-lg-12 text-center" style="display:flex" ng-if="vm.myDocuments.length < 1 && vm.mySharedDocuments.length < 1 && vm.myFolders.length < 1 && vm.mySharedFolders.length < 1">
+        <!--h2 style="margin-bottom: 30px;">No tienes documentos o carpetas</h2-->
+        <div class="col-lg-5 upload" data-toggle="modal" data-target="#uploadFileModal">
+          <i class="fa fa-upload" style="font-size: 30px; color: #15aabf"></i>
+          <h3 >Subir documento</h3>
+        </div>
+        <div class="col-lg-5 col-lg-offset-2 upload" data-toggle="modal" data-target="#createFolderModal">
+          <i class="fa fa-folder" style="font-size: 30px; color: #15aabf"></i>
+          <h3>Crear carpeta</h3>
+        </div>
+      </div>
+
+      <!-- modal para crear carpeta -->
+      <div class="modal fade" id="createFolderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="exampleModalLabel">{{vm.newFolder.name || 'Nueva Carpeta'}}</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="control-label">Nombre de la Carpeta:</label>
+                  <input type="text" class="form-control" id="recipient-name" ng-model="vm.newFolder.name">
+                </div>
+                <!-- div class="form-group">
+                <label for="message-text" class="control-label">Message:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" ng-click="vm.createNewFolder()">Crear Carpeta</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- modal para crear subir documento -->
+      <div class="modal fade" id="uploadFileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="exampleModalLabel">Subir Documento</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="control-label">Archivo:</label>
+                  <input type="file" name="file" id="file-1" ngf-select name="file" ngf-accept=" '.pdf, .doc, .docx' " ng-model="vm.fileInfo.file"/>
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="control-label">Descripcion:</label>
+                  <textarea class="form-control" id="message-text" ng-model="vm.fileInfo.description"></textarea>
+                </div>
+                <div>
+                  <label for="message-text" class="control-label">Categoria:</label>
+                  <select class="form-control" ng-model="vm.fileInfo.idCategory">
+                    <option></option>
+                    <option ng-repeat="category in vm.categories" ng-value="{{category.id}}">{{category.name}}</option>
+                  </select>
+                </div>
+
+                <div ng-if="vm.uploadStatus">
+                  <div class="alert alert-success" role="alert">EL documento se subio correctamente</div>
+                </div>
+
+                <div ng-if="vm.uploadStatus == false">
+                  <div class="alert alert-danger" role="alert">Error al subir el documento</div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" ng-click="vm.uploadDocument()">Subir Archivo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

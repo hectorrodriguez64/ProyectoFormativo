@@ -1,0 +1,60 @@
+.Create
+  padding 12em 0 4em 0
+  text-align center
+  background-position:center
+  background-size cover
+  &-formTop
+    display block
+    text-align left
+  &-formLogotype
+    display inline-block
+    font-size 40px
+    margin 0
+  &-formTitle
+    display inline-block
+    font-size 2em
+    padding-left 0.5em
+    color #34526b
+    font-weight bold;
+    margin 0
+  &-formRight, .Create-formLeft
+    display inline-block
+    vertical-align:top
+    width 45%
+  &-formLeft
+    margin-right 2em
+  &-formRight
+    text-align center
+  &-formInput,.Create-formSelect,.Create-formOption
+    display block
+    padding 10px
+    margin-top 20px
+    width 100%
+    background-color #eaf1f4
+    border-style none
+    font-weight bold
+  &-formSelect
+    color #a9a9a9
+  &-formButton
+    margin-top 20px
+    padding 10px 30px
+    background-color #2a6496
+    color white
+    font-weight bold
+    font-size 1.2em
+    border-style none
+  &-formButton:hover
+    transition 0.2s
+    background-color #116AB2
+
+.Error-formMessage
+  border 3px solid #D8000C
+  background-color: #FFBABA
+  color #D8000C
+  border-radius 3px
+  padding 10px
+  margin-top 10px
+  display block
+@media (max-width: 400px)
+  .Create-formButton
+    padding 9px 

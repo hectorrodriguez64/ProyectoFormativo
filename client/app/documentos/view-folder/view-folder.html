@@ -1,0 +1,131 @@
+<div class="container Documents-container">
+	<div class="row">
+		<div class="col-lg-12 text-center">
+			<h3><i class="fa fa-folder-open" style="color: #dfaf1f"></i>{{vm.folder.name}}</h3>
+      <div style="margin-top: 10px; margin-bottom: 10px" class="col-lg12 text-left"> 
+          <button class="col-lg-3 btn btn-success" style="margin-right: 10px" data-toggle="modal" data-target="#deleteFolderModal" ng-if = "vm.folder.usersId.id == vm.AuthService.idUsuario()">BORRAR CARPETA</button>
+          
+          <button class="col-lg-3 btn btn-success" style="margin-right: 10px" data-toggle="modal" data-target="#shareFolderModal">COMPARTIR CARPETA</button>
+          <button class="col-lg-3  btn btn-primary" data-toggle="modal" data-target="#uploadFileModal">SUBIR DOCUMENTO</button>
+      </div>
+		</div>
+		<div class="col-lg12" ng-if = "vm.documents.length < 1">
+			<div class="text-center">
+				<h2>No tienes documentos en esta carpeta <a href=""><h2 style="display: inline-block; color: blue"
+        data-toggle="modal" data-target="#uploadFileModal">SUBE UNO</h2></a></h2>
+			</div>
+		</div>
+
+    <div class="col-lg-12" ng-if = "vm.documents.length > 0" style="margin-top: 10px;">
+            <div class="col-lg-3 text-center" ng-repeat = "document in vm.documents">
+              <div class="list-group" ng-dblclick="vm.openDocument(document.id)">
+                <a href="#" class="list-group-item {{document.format}}">
+                  <i class="fa fa-file-word-o" style="font-size: 45px" ng-if="document.format == 'doc' || document.format == 'docx' "></i>
+                  <i class="fa fa-file-pdf-o" style="font-size: 45px" ng-if="document.format == 'pdf' "></i>
+                  <p class="list-group-item-text text-center" style="font-size: 12px; font-weight: bold;">{{document.name}}</p>
+                      
+                </a>
+              </div> 
+            </div> 
+    </div>
+
+
+		<!-- modal para crear subir documento -->
+        <div class="modal fade" id="uploadFileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Subir Documento</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">Archivo:</label>
+                    <input type="file" name="file" id="file-1"  ngf-select 
+                            name="file"
+                            
+                            ngf-accept=" '.pdf, .doc, .docx' "
+                            ng-model = "vm.fileInfo.file"/>
+                  </div>
+                <div class="form-group">
+                  <label for="message-text" class="control-label">Descripcion:</label>
+                  <textarea class="form-control" id="message-text" ng-model = "vm.fileInfo.description"></textarea>
+                </div>
+                <div> 
+                    <label for="message-text" class="control-label">Categoria:</label>
+                    <select class="form-control" ng-model = "vm.fileInfo.idCategory">
+                      <option></option>
+                      <option ng-repeat = "category in vm.categories" ng-value="{{category.id}}">{{category.name}}</option>
+                    </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" ng-click = "vm.uploadDocument()">Subir Archivo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+        <!-- modal para compartir carpeta -->
+    <div class="modal fade" id="shareFolderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">Compartir Carpeta</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Email:</label>
+                <md-autocomplete md-selected-item="vm.userShare" md-search-text="vm.query" md-items="item in vm.findUsers(vm.query)" md-item-text="item.name +' '+ item.lastName" >
+                  <md-item-template>
+                    <img ng-src="../../../assets/fotos-usuarios/{{item.ulrImg}}" height="30px" width="30px">
+                    <span md-highlight-text="vm.query">{{item.name}} {{item.lastName}}</span>
+                  </md-item-template>
+                  <md-not-found>
+                    No matches found.
+                  </md-not-found>
+                </md-autocomplete>
+              </div>
+                <!-- div class="form-group">
+                  <label for="message-text" class="control-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+              </div -->
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" ng-click = "vm.compartirCarpeta(vm.userShare)">Compartir</button>
+      </div>
+  </div>
+</div>
+</div>
+
+
+<!-- modal para confirmar y eliminar carpeta -->
+    <div class="modal fade" id="deleteFolderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">Eliminar Carpeta</h4>
+          </div>
+          <div class="modal-body">
+            <h3>¿Esta seguro de querer borrar la carpeta?</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+            <button type="submit" class="btn btn-primary" ng-click = "vm.deleteFolder()">SI</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+	</div>
+</div>

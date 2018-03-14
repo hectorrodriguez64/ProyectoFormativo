@@ -1,0 +1,113 @@
+<div class="Sticky-header Header-section">
+  <div class="Header-left">
+    <div>
+      <!--toggle button start-->
+      <button id="showLeftPush" ng-click="vm.ocultar()">
+        <i class="fa fa-bars"></i>
+      </button>
+      <!--toggle button end-->
+      <!--logo -->
+    </div>
+    <div class="Logo" ng-class="vm.clase">
+      <a href="">
+        <h1>SGEDI</h1>
+        <span>Dashboard</span>
+      </a>
+    </div>
+    <!--//logo-->
+    <div class="clearfix"></div>
+  </div>
+  <div class="Header-right">
+    <div class="Profile_details_left">
+      <!--notifications of menu start -->
+      <div class="clearfix"></div>
+    </div>
+    <!--notification menu end -->
+    <div class="Profile_details">
+      <ul>
+        <li class="dropdown Profile_details_drop ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <div class="Profile_img">
+              <span class="Prfil-img img-responsives img-circle"><img src="assets/fotos-usuarios/avatar-user.png" ng-src="assets/fotos-usuarios/{{vm.getPicSrc()}}" alt="esta es mi imagen de perfil" style="width: 77px;">
+              </span>
+              <div class="User-name">
+                <!--p>{{vm.AuthService.datosUsuario()}}</p-->
+                <span>{{vm.AuthService.datosUsuario()}}</span>
+              </div>
+              <i class="fa fa-angle-down lnr"></i>
+              <i class="fa fa-angle-up lnr"></i>
+              <div class="clearfix"></div>
+            </div>
+          </a>
+          <ul class="dropdown-menu Drp-mnu">
+            <li>
+              <a ui-sref="profile">
+                <i class="fa fa-user"></i>
+                Profile</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-cog"></i>
+                Settings</a>
+            </li>
+
+            <li>
+              <a href="#" ng-click="vm.AuthService.logout()">
+                <i class="fa fa-sign-out"></i>
+                Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="sidebar row Menu" role="navigation" ng-class="vm.clase">
+  <div class="navbar-collapse navCollapse col-md-3">
+    <nav class="Cbp-spmenu Cbp-spmenu-vertical Cbp-spmenu-left" id="cbp-spmenu-s1">
+      <ul class="nav in" id="side-menu">
+        <li class="">
+          <a ui-sref="dashboard-user">
+            <i class="fa fa-home Nav_icon"></i>
+          Dashboard<span class="fa arrow"></span>
+          </a>
+        </li>
+        <li class="">
+          <a ui-sref="documentos">
+            <i class="fa fa-book Nav_icon"></i>
+            Mis documentos<span class="fa arrow"></span>
+          </a>
+        </li>
+        <li>
+          <a href="#compartidos">
+            <i class="fa fa-th-large Nav_icon"></i>
+            Documentos compartidos</a>
+        </li>
+        <li>
+          <a ui-sref="documentos">
+            <i class="fa fa-envelope Nav_icon"></i>
+            Mis Carpetas<span class="fa arrow"></span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-cogs Nav_icon"></i>
+            Ajustes<span class="fa arrow"></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="col-md-8 Content">
+    <div class="col-md-12" style="border-width: .5px .5px .5px .5px; border-style: solid; border-color: lightgrey;">
+
+      <md-content>
+        <div ui-view=""></div>
+      </md-content>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,102 @@
+<div class="container">
+    <!--<h2 class="text-center">Lista de usuarios</h2>
+      <table class="table table-hover">
+    <thead class="Table-header">
+      <tr class="Table-rowHeader">
+        <th class="Table-itemHeader">Id</th>
+        <th class="Table-itemHeader">Nombre</th>
+        <th class="Table-itemHeader">Apellido</th>
+        <th class="Table-itemHeader">Email</th>
+        <th class="Table-itemHeader">Tipo de Documento</th>
+        <th class="Table-itemHeader">N.Documento</th>
+        <th class="Table-itemHeader">Sexo</th>
+        <th class="Table-itemHeader">Activo</th>
+        <th class="Table-itemHeader">Ciudad</th>
+        <th class="Table-itemHeader">Departamento</th>
+        <th class="Table-itemHeader">Pais</th>
+      </tr>
+    </thead>
+    <tbody class="Table-body">
+      <tr class="Table-rowBody" ng-repeat="item in vm.arreglo">
+        <td class="Table-itemBody">{{item.id}}</td>
+        <td class="Table-itemBody">{{item.name}}</td>
+        <td class="Table-itemBody">{{item.lastName}}</td>
+        <td class="Table-itemBody">{{item.email}}</td>
+        <td class="Table-itemBody">{{item.idDocumentsType.description}}</td>
+        <td class="Table-itemBody">{{item.numdocument}}</td>
+        <td class="Table-itemBody">{{item.sex}}</td>
+        <td class="Table-itemBody">{{item.active}}</td>
+        <td class="Table-itemBody">{{item.idCities.description}}</td>
+        <td class="Table-itemBody">{{item.idCities.idDepartaments.description}}</td>
+        <td class="Table-itemBody">{{item.idCities.idDepartaments.idCountries.description}}</td>
+
+        <td class="Table-itemBody"><a class="btn btn-primary" ui-sref="usuarios-update({idUsuario:item.id})">actualizar</a></td>
+      </tr>
+    </tbody>
+  </table>-->
+
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+      <span>Usuarios List</span>
+    </div>
+  </md-toolbar>
+<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title"> Filtrar</h3>
+			<input type="text" class="form-control" ng-model="vm.filtro">
+		</div>
+		<div class="panel-body">
+
+		<md-table-container>
+			<table md-table md-row-select multiple ng-model="vm.selected" md-progress="promise">
+				<thead md-head md-order="vm.query.order" md-on-reorder="getDesserts">
+					<tr md-row>
+          <th md-column>Nombre</th>
+          <th md-column>Apellido</th>
+          <th md-column>Email</th>
+          <th md-column>Tipo de Documento</th>
+          <th md-column>N.Documento</th>
+          <th md-column>Sexo</th>
+          <th md-column>Activo</th>
+          <th md-column>Ciudad</th>
+          <th md-column>Departamento</th>
+          <th md-column>Pais</th>
+          <th md-column>Accion</th>
+          <th md-column>Imagen</th>
+					</tr>
+				</thead>
+				<tbody md-body>
+					<tr md-row md-select="desserts" md-select-id="name" md-auto-select ng-repeat="item in vm.arreglo | limitTo:
+					vm.query.limit: (vm.query.page - 1) * vm.query.limit |
+					filter: vm.filtro">
+          <td md-cell>{{item.name}}</td>
+          <td md-cell>{{item.lastName}}</td>
+          <td md-cell>{{item.email}}</td>
+          <td md-cell>{{item.documentsType.description}}</td>
+          <td md-cell>{{item.numDocument}}</td>
+          <td md-cell>{{item.sex}}</td>
+          <td md-cell>{{item.active}}</td>
+          <td md-cell>{{item.cities.description}}</td>
+          <td md-cell>{{item.cities.idDepartaments.description}}</td>
+          <td md-cell>{{item.cities.idDepartaments.idCountries.description}}</td>
+          <td md-cell> <a target="_blank" href="../../../assets/documentos/{{item.ulrImg}}" download="{{item.ulrImg}}" alt="">{{item.ulrImg}}</a> </td>
+
+          <td class="Table-itemBody"><a class="btn btn-primary" ui-sref="usuarios-update({idUsuario:item.id})">actualizar</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</md-table-container>
+
+		<md-table-pagination
+				md-limit = "vm.query.limit"
+				md-limit-options = "[2,10,15]"
+				md-page = "vm.query.page"
+				md-total = "{{vm.usuarios.length}}"
+        md-on-paginate="getDesserts"
+        md-page-select>
+
+		</md-table-pagination>
+
+	</div>
+</div>
+</div>

@@ -1,0 +1,566 @@
+.Sticky-header
+    position fixed
+    top 0
+    left 0px
+    width 100%
+    z-index 100
+
+.Header-section
+    background #FFF
+    box-shadow 1px 1px 4px rgba(0, 0, 0, 0.21)
+    -webkit-box-shadow 1px 1px 4px rgba(0, 0, 0, 0.21)
+    -moz-box-shadow 1px 1px 4px rgba(0, 0, 0, 0.21)
+    -o-box-shadow 1px 1px 4px rgba(0, 0, 0, 0.21)
+    &::after
+        clear both
+        display block
+        content ''
+
+.Header-left
+    float left
+    width 45%
+
+.Header-right
+    float right
+    i
+        &.fa
+            &.fa-envelope
+                color #6F6F6F
+    span
+        &.badge
+            font-size 11px
+            font-weight bold
+            color #FFF
+            background #8BC34A
+            line-height 15px
+            width 20px
+            height 20px
+            border-radius 2em
+            -webkit-border-radius 2em
+            -moz-border-radius 2em
+            -o-border-radius 2em
+            text-align center
+            display inline-block
+            position absolute
+            top 16%
+            padding 2px 0 0
+        &.blue
+            background-color #D81B60
+        &.red
+            background-color #ef553a
+        &.blue1
+            background-color #9358ac
+
+button#showLeftPush
+    font-size 1.5em
+    width 80px
+    padding 0.87em 0
+    text-align center
+    cursor pointer
+    float left
+    color #6F6F6F
+    -moz-transition all 0.2s ease-out 0s
+    -webkit-transition all 0.2s ease-out 0s
+    transition all 0.2s ease-out 0s
+    border none
+    background-color #fff
+    outline none
+    &:hover
+        color #6164C1
+
+.Cbp-spmenu-vertical
+    width 302px
+    height 100%
+    top 76px
+    background-color #117BFF
+    padding 4em 0
+
+.Cbp-spmenu-left
+    left -6px
+    padding-bottom 12em
+    &.Cbp-spmenu-open
+        left -309px
+
+.Cbp-spmenu-push
+    overflow-x hidden
+    position relative
+    div#page-wrapper
+        margin 0 0 0 19.3em
+        transition .5s all
+        -webkit-transition .5s all
+        -moz-transition .5s all
+    &.Cbp-spmenu-push-toright
+        div#page-wrapper
+            margin 0
+
+.Cbp-spmenu-push-toright
+    left 0
+
+.Cbp-spmenu,
+.Cbp-spmenu-push
+    -webkit-transition all 0.3s ease
+    -moz-transition all 0.3s ease
+    transition all 0.3s ease
+
+.sidebar
+    ul
+        li
+            margin-bottom 1em
+            a
+                color #FFFFFF
+                font-size 1em
+    .arrow
+        float right
+
+.nav > li > a:hover, .nav > li > a:focus
+    text-decoration none
+    background-color transparent
+
+
+i
+    &.nav_icon
+        margin-right 1em
+        font-size 1.1em
+    &.fa
+        &.fa-bell
+            color #6F6F6F
+        &.fa-tasks
+            color #6F6F6F
+    &.icon_1
+        float left
+        color #00aced
+        line-height 2em
+        margin-right 1em
+    &.icon_2
+        float left
+        color #ef553a
+        line-height 2em
+        margin-right 1em
+        font-size 20px
+    &.icon_3
+        float left
+        color #9358ac
+        line-height 2em
+        margin-right 1em
+        font-size 20px
+    &.icon_4
+        width 45px
+        height 45px
+        background #F44336
+        float left
+        color #fff
+        text-align center
+        font-size 1.5em
+        line-height 44px
+        font-style normal
+        margin-right 1em
+    &.icon_5
+        background-color #3949ab
+    &.icon_6
+        background-color #03a9f4
+
+.fa
+    display inline-block
+    font-family FontAwesome
+    font-style normal
+    font-weight normal
+    line-height 1
+    -webkit-font-smoothing antialiased
+    -moz-osx-font-smoothing grayscale
+
+span
+    &.nav-badge
+        font-size 12px
+        color #FFFFFF
+        background rgba(255, 255, 255, 0.32)
+        width 25px
+        height 25px
+        border-radius 68%
+        -webkit-border-radius 68%
+        -moz-border-radius 68%
+        -o-border-radius 68%
+        position absolute
+        top 18%
+        right 15%
+        line-height 26px
+        letter-spacing 1px
+        text-align center
+    &.nav-badge-btm
+        font-size 12px
+        color #FFF
+        background #F2B33F
+        position absolute
+        top 18%
+        right 15%
+        line-height 22px
+        letter-spacing 1px
+        text-align center
+        padding 0em 1em
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
+    background none
+    color #e94e02
+
+.chart-nav
+    span
+        &.nav-badge-btm
+            right 5%
+            top 24%
+
+ul
+    &.dropdown-menu
+        animation flipInX 1s ease
+        -moz-animation flipInX 1s ease
+        -webkit-animation flipInX 1s ease
+        -webkit-backface-visibility visible !important
+        -ms-backface-visibility visible !important
+        backface-visibility visible !important
+        -moz-backface-visibility visible !important
+        data-wow-delay ".1s"
+        padding 0
+        min-width 215px
+        top 101%
+        li
+            margin-left 0
+            width 100%
+            padding 0
+            background #fff
+        &.Drp-mnu
+            i
+                &.fa
+                    margin-right 0.5em
+            li
+                list-style-type none
+                padding 3px 0
+
+.Logo
+    background #6164C1
+    text-align center
+    float left
+    a
+        padding 0.9em 3.3em .7em
+        display block
+        text-decoration none
+        background-color #0170FF
+        h1
+            color #fff
+            font-size 1.5em
+            line-height 1.2em
+            font-weight 700
+        span
+            color #F8F8F8
+            font-size .7em
+            text-align center
+            letter-spacing 7px
+
+.Search-box
+    float left
+    width 34%
+    margin 1.2em 0 0 3em
+    position relative
+    z-index 1
+    display inline-block
+
+.Sb-search-input
+    outline none
+    background #fff
+    width 100%
+    margin 0
+    z-index 10
+    font-size 0.9em
+    color #6164C1
+    padding 0.5em 1em
+    border 2px solid rgba(79, 82, 186, 0.3)
+    -webkit-appearance none
+    font-family 'Roboto Condensed', sans-serif
+    &::-webkit-input-placeholder
+        color #6164C1
+    &:-moz-placeholder
+        color #6164C1
+    &::-moz-placeholder
+        color #6164C1
+    &:-ms-input-placeholder
+        color #6164C1
+
+.Input__label
+    -webkit-font-smoothing antialiased
+    -moz-osx-font-smoothing grayscale
+    -webkit-touch-callout none
+    -webkit-user-select none
+    -khtml-user-select none
+    -moz-user-select none
+    -ms-user-select none
+    user-select none
+    position absolute
+    width 100%
+    height 100%
+
+.Graphic
+    fill none
+    -webkit-transform scale3d(1, -1, 1)
+    transform scale3d(1, -1, 1)
+    -webkit-transition stroke-dashoffset 0.5s
+    transition stroke-dashoffset 0.5s
+    pointer-events none
+    stroke #D81B60
+    stroke-width 6px
+    stroke-dasharray 962
+    stroke-dashoffset 962
+
+.Input__field--search
+    background transparent
+    display block
+    float right
+    &:focus
+        outline none
+        & + .Input__label
+            .Input__label-content
+                -webkit-transform scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0)
+                transform scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0)
+
+.Input__field--search:focus + .Input__label,
+.Input--filled .Input__label
+    cursor default
+    pointer-events none
+
+.Input__field--search:focus + .Input__label .Graphic,
+.Input--filled .Graphic
+    stroke-dashoffset 0
+
+.Profile_details_left
+    float left
+
+.dropdown-menu
+    box-shadow 2px 3px 4px rgba(0, 0, 0, .175)
+    -webkit-box-shadow 2px 3px 4px rgba(0, 0, 0, .175)
+    -moz-box-shadow 2px 3px 4px rgba(0, 0, 0, .175)
+    border-radius 0
+    & > li
+        & > a
+            padding 3px 15px
+            font-size 1em
+
+li
+    &.dropdown
+        &.Head-dpdn
+            display inline-block
+            padding 1.7em 0
+            border-left 1px solid #E0E0E0
+            float left
+            &:nth-child(3)
+                border-right 1px solid #E0E0E0
+            a
+                &.dropdown-toggle
+                    padding 1.7em 2em
+
+.User-panel-top
+    ul
+        padding-left 0
+    li
+        float left
+        margin-left 15px
+        position relative
+        span
+            &.Digit
+                font-size 11px
+                font-weight bold
+                color #FFF
+                background #e64c65
+                line-height 20px
+                width 20px
+                height 20px
+                border-radius 2em
+                -webkit-border-radius 2em
+                -moz-border-radius 2em
+                -o-border-radius 2em
+                text-align center
+                display inline-block
+                position absolute
+                top -3px
+                right -10px
+            &.green
+                background #a88add
+            &.red
+                background #b8c9f1
+            &.yellow
+                background #bdc3c7
+        &:first-child
+            margin-left 0
+        a
+            display block
+            padding 5px
+            text-decoration none
+            &:hover
+                border-color rgba(101, 124, 153, 0.93)
+            i
+                width 24px
+                height 24px
+                display block
+                text-align center
+                line-height 25px
+                span
+                    font-size 15px
+                    color #FFF
+            &.user
+                background #667686
+
+.sidebar .Nav-second-level li a.active ,.sidebar ul li a.active
+    color #F2B33F
+
+li.active a i, .act a i
+    color #F2B33F
+
+.Custom-nav > li.act > a, .Custom-nav > li.act > a:hover, .Custom-nav > li.act > a:focus
+    background-color #353f4f
+    color #8BC34A
+
+.Notification_header
+    background-color #FAFAFA
+    padding 10px 15px
+    border-bottom 1px solid rgba(0, 0, 0, 0.05)
+    margin-bottom 8px
+    h3
+        color #6A6A6A
+        font-size 12px
+        font-weight 600
+        margin 0
+
+.Notification_bottom
+    background-color rgba(200, 129, 230, 0.14)
+    padding 4px 0
+    text-align center
+    margin-top 5px
+    a
+        color #6F6F6F
+        font-size 1em
+        &:hover
+            color #6164C1
+    h3
+        a
+            color #717171
+            font-size 12px
+            border-radius 0
+            border none
+            padding 0
+            text-align center
+            &:hover
+                color #4A4A4A
+                text-decoration underline
+                background none
+
+.User_img
+    float left
+    width 19%
+    img
+        max-width 100%
+        display block
+        border-radius 2em
+        -webkit-border-radius 2em
+        -moz-border-radius 2em
+        -o-border-radius 2em
+
+.Notification_desc
+    float left
+    width 70%
+    margin-left 5%
+    p
+        color #757575
+        font-size 13px
+        padding 2px 0
+        span
+            color #979797 !important
+            font-size 11px
+
+.Wrapper-dropdown-2
+    .dropdown
+        li
+            a
+                &:hover
+                    .Notification_desc
+                        p
+                            color #424242
+
+.Avatar_left
+    float left
+
+.blue-text
+    color #2196F3 !important
+    float right
+
+.Profile_details
+    float right
+    ul
+        li
+            list-style-type none
+            position relative
+            ul
+                &.dropdown-menu
+                    &.Drp-mnu
+                        padding 1em
+                        min-width 190px
+                        top 122%
+                        left 0%
+    li
+        a
+            i
+                &.fa
+                    &.lnr
+                        position absolute
+                        top 34%
+                        right 8%
+                        color #4F52BA
+                        font-size 1.6em
+
+.Profile_details_drop
+    .fa
+        &.fa-angle-up
+            display none
+    &.open
+        .fa
+            &.fa-angle-up
+                display block
+            &.fa-angle-down
+                display none
+    a
+        &.dropdown-toggle
+            display block
+            padding 0.8em 3em 0 2em
+
+.Profile_img
+    span
+        &.Prfil-img
+            float left
+
+.User-name
+    float left
+    margin-top 8px
+    margin-left 11px
+    height 35px
+    p
+        font-size 1em
+        color #DD6777
+        line-height 1em
+        font-weight 700
+    span
+        font-size .75em
+        font-style italic
+        color #424f63
+        font-weight normal
+        margin-top .3em
+.ocultar
+  transform translateX(-309px);
+  transition 0.5s
+  transition-delay 0.2s
+.mostrar
+  transform translateX(0);
+  transition 0.5s
+  transition-delay 0.2s
+
+.navCollapse
+  max-height none
+  padding-left 15
+
+.Menu
+  padding-bottom 6em
+.Content
+  padding-top 147px

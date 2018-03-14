@@ -1,0 +1,94 @@
+<Header class="Header-container">
+  <div class="container">
+    <div class="row Header-containerAlignV">
+      <div class="col-xs-6">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <div class="Titulo">
+            <img class="Titulo-logo" src="assets/images/logotipo.png" alt="logo" />
+            <a ui-sref="main" class="Titulo-uno text-center">Desarrollo</a>
+            <a ui-sref="main" class="Titulo-dos text-center">SGEDI</a>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-xs-6 text-right">
+        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navMenu">
+          <i class="fa fa-bars"></i>
+        </button>
+           <ul class="nav navbar-nav navbar-right">
+        <li ng-show="!vm.AuthService.isAuthenticated()"><a class="Login-navbar hidden-xs" ui-sref="login">Login</a></li>
+        <li ng-show="!vm.AuthService.isAuthenticated()"><a class="SignUp-navbar hidden-xs" ui-sref="usuarios-create">Sign up</a></li>
+        <!--li ng-show="vm.AuthService.isAuthenticated()" class="img-avatar"><a href="">
+          <img class="img-responsive" ng-src="../../assets/fotos-usuarios/{{vm.AuthService.getImagePerfil()}}"  alt=""></a></li-->
+        <li ng-show="vm.AuthService.isAuthenticated()" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{vm.AuthService.datosUsuario()}} <span class="caret"></span></a>
+          <ul class="dropdown-menu text-center DropdMenu">
+            <li ><a ui-sref="dashboard-user">Dashboard</a></li>
+            <li ><a ng-click="vm.AuthService.logout()" href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<!--Menu-->
+<div ng-if="!vm.AuthService.isAuthenticated()" class="MenuContainer">
+  <nav class="collapse navbar navbar-collapse NavbarMargin" id="navMenu">
+    <div class="container">
+      <div class="row AlignNavbar">
+        <div class="col-xs-10 col-xs-offset-1 col-md-7 col-md-offset-0 AlignItemsNavbar">
+          <ul class="nav navbar-nav">
+            <li ng-show="!vm.AuthService.isAuthenticated()">
+              <a ui-sref="main" ui-sref-active="active" class="navbar-link text-center" ng-click="vm.ocultarCollapse()">Home</a>
+            </li>
+            <li ng-show="!vm.AuthService.isAuthenticated()">
+              <a ui-sref="about" ui-sref-active="active" class="navbar-link text-center" ng-click="vm.ocultarCollapse()">About Us</a>
+            </li>
+            <li ng-show="!vm.AuthService.isAuthenticated()">
+              <a ui-sref="servicios" ui-sref-active="active" class="navbar-link text-center " ng-click="vm.ocultarCollapse()">Our Services</a>
+            </li>
+            <li ng-show="!vm.AuthService.isAuthenticated()">
+              <a ui-sref="contacto" class="navbar-link text-center" ng-click="vm.ocultarCollapse()">Contact Us</a>
+            </li>
+              <li ng-show="!vm.AuthService.isAuthenticated()"><a ng-click="vm.ocultarCollapse()" class="navbar-link text-center hidden-sm hidden-md hidden-lg" ui-sref="login">Login</a></li>
+            <li ng-show="!vm.AuthService.isAuthenticated()"><a ng-click="vm.ocultarCollapse()" class=" navbar-link text-center hidden-sm hidden-md hidden-lg" ui-sref="usuarios-create">Sign up</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-md-5 hidden-xs MarginSearch-margin ">
+          <form>
+            <div class=" input-group ">
+              <input type="text " class="form-control " placeholder="What you want to search">
+              <span class="input-group-btn ">
+                            <button class="btn Btn-search ">
+                                <span class="hidden-xs hidden-sm ">Search</span>
+              <i class="fa fa-search IconSearch visible-xs visible-sm "></i>
+              </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg MarginTopSearch ">
+    <form>
+      <div class=" input-group ">
+        <input type="text " class="form-control " placeholder="What you want to search">
+        <span class="input-group-btn ">
+                            <button class="btn Btn-search Media-btn ">
+                                <span class="hidden-xs hidden-sm ">Search</span>
+        <i class="fa fa-search IconSearch visible-xs visible-sm "></i>
+        </button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+<!--Menu-->

@@ -1,0 +1,58 @@
+<div class="container">
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+      <span>Company List</span>
+    </div>
+  </md-toolbar>
+<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Filtrar</h3>
+			<input type="text" class="form-control" ng-model="vm.filtro">
+		</div>
+		<div class="panel-body">
+
+		<md-table-container>
+			<table md-table md-row-select multiple ng-model="vm.selected" md-progress="promise">
+				<thead md-head md-order="vm.query.order" md-on-reorder="getDesserts">
+					<tr md-row>
+          <th md-column>NIT</th>
+          <th md-column>Razón Social</th>
+          <th md-column>Nombre Comercial</th>
+          <th md-column>Representante Legal</th>
+          <th md-column>Contacto</th>
+          <th md-column>Email</th>
+          <th md-column>Ciudad</th>
+          <th md-column>Activo</th>
+        	</tr>
+				</thead>
+				<tbody md-body>
+					<tr md-row md-select="desserts" md-select-id="name" md-auto-select ng-repeat="item in vm.arreglo | limitTo:
+					vm.query.limit: (vm.query.page - 1) * vm.query.limit |
+					filter: vm.filtro">
+          <td md-cell>{{item.nit}}</td>
+          <td md-cell>{{item.razonSocial}}</td>
+          <td md-cell>{{item.nombreComercial}}</td>
+          <td md-cell>{{item.representanteLegal}}</td>
+          <td md-cell>{{item.contacto}}</td>
+          <td md-cell>{{item.cities.description}}</td>
+          <td md-cell>{{item.email}}</td>
+          <td md-cell>{{item.active}}</td>
+          <td class="Table-itemBody"><a class="btn btn-primary" ui-sref="company-update({idCompany:item.id})">Actualizar</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</md-table-container>
+
+		<md-table-pagination
+				md-limit = "vm.query.limit"
+				md-limit-options = "[2,10,15]"
+				md-page = "vm.query.page"
+				md-total = "{{vm.company.length}}"
+        md-on-paginate="getDesserts"
+        md-page-select>
+
+		</md-table-pagination>
+
+	</div>
+</div>
+</div>
